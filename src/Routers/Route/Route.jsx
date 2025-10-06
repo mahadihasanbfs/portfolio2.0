@@ -160,9 +160,9 @@ export const route = createBrowserRouter([
                               <ScrollToTop />
                               <Blog />
                         </>,
-                        loader: async () => {
-                              return fetch(`${base_url}/blog/get-blog`)
-                        }
+                        // loader: async () => {
+                        //       return fetch(`${base_url}/blog/get-blog`)
+                        // }
                   },
                   {
                         path: "/admin/blog",
@@ -192,9 +192,9 @@ export const route = createBrowserRouter([
                               <ScrollToTop />
                               <AllProject />
                         </>,
-                        loader: async () => {
-                              return fetch(`${base_url}/project/get-project`)
-                        }
+                        // loader: async () => {
+                        //       return fetch(`${base_url}/project/get-project`)
+                        // }
                   },
                   {
                         path: "/all_project/:id",

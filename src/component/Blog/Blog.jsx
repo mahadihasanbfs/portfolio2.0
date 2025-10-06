@@ -1,17 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import BlogCart from './BlogCart/BlogCart';
 import { useLoaderData } from 'react-router-dom';
-import Title from '../../layout/Title';
+import Title, { base_url } from '../../layout/Title';
 import MetaTitle from '../../layout/Title';
 import moduleName from '../../Assctes/logo.png';
+import { useQuery } from '@tanstack/react-query';
 
 const Blog = () => {
-      const blog_data = useLoaderData();
+      // const blog_data = useLoaderData();
+      const {
+            data: blog = [],
+            refetch,
+            isLoading,
+      } = useQuery({
+            queryKey: ["all_users"],
+            queryFn: async () => {
+                  const res = await fetch(`${base_url}/blog/get-blog`, {
+                        headers: {
+                              "content-type": "application/json",
+                              author: "bright_future_soft",
+                        },
+                        method: "GET",
+                  })
+                  const data = await res.json()
+                  return data.data
+            },
+      })
       useEffect(() => {
             window.scrollTo(0, 0);
       }, []);
 
-      const blog = blog_data?.data
+
 
 
       return (
@@ -43,7 +62,17 @@ const Blog = () => {
                         <br />
                         <div className="grid md:grid-cols-3 gap-12">
                               {
-                                    blog?.map(bData => <BlogCart key={bData._id} bData={bData} />)
+                                    isLoading ? (
+                                          Array.from({ length: 6 }).map((_, i) => ( <article className="overflow-hidden rounded-lg border border-white border-opacity-25 shadow-sm ">
+                                                <div className="h-56 w-full bg-gray-300"></div>
+                                                <div className="p-4 sm:p-6">
+                                                      <div className="h-6 w-2/3 bg-gray-400 mb-2 rounded"></div>
+                                                      <div className="mt-2 h-4 w-full bg-gray-400 rounded"></div>
+                                                      <div className="mt-2 h-4 w-1/2 bg-gray-400 rounded"></div>
+                                                      <div className="mt-4 h-6 w-24 bg-blue-300 rounded"></div>
+                                                </div>
+                                          </article>))
+                                    ) :   blog?.map(bData => <BlogCart key={bData._id} bData={bData} />)
                               }
                         </div>
                   </div>

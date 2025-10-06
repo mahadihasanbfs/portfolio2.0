@@ -131,6 +131,7 @@ const Contact = () => {
                                                 <li className='mt-6 '>
                                                       <a target='_blank' href="https://www.instagram.com/thebrightfuture_co/" className=" gap-2 duration-200 hover:text-blue-400"><BsInstagram className='text-4xl text-[#00a2ff] bg-white hover:bg-blue-300 p-1 rounded-full' /></a>
                                                 </li>
+                                                
 
                                           </ul>
                                     </div>
