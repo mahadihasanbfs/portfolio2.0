@@ -6,6 +6,7 @@ import { AuthContext } from "../../../context/UseContext/UseContext"
 import { base_url } from "../../../layout/Title"
 import { FaBlog } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import CalendarPage from "./Calender"
 
 export default function TaskReport() {
       const { user } = useContext(AuthContext)
@@ -293,6 +294,9 @@ export default function TaskReport() {
                                     </SpotlightCard>
                               ))}
                         </div>
+
+                        <CalendarPage/>
+
                   </div>
             </div>
       )
