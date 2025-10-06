@@ -41,6 +41,8 @@ import ViewDetails from '../../component/Jobs/ViewDitals';
 import ScrollToTop from './Scroll_to_top';
 import Read_more from '../../component/Offer/OfferCart/Readmore';
 import Read_more_service from '../../component/Service/Service/Readmore';
+import TermsAndConditions from '../../component/Trams_and_Policy/Trams_and_condition';
+import PrivacyISMSPolicy from '../../component/Trams_and_Policy/Privecy_policy';
 
 export const route = createBrowserRouter([
       {
@@ -132,10 +134,24 @@ export const route = createBrowserRouter([
                         </>
                   },
                   {
-                        path: "/contract",
+                        path: "/contacts",
                         element: <>
                               <ScrollToTop />
                               <MainContract />
+                        </>
+                  },
+                  {
+                        path: "/trams-and-conditions",
+                        element: <>
+                              <ScrollToTop />
+                              <TermsAndConditions />
+                        </>
+                  },
+                  {
+                        path: "/policy",
+                        element: <>
+                              <ScrollToTop />
+                              <PrivacyISMSPolicy />
                         </>
                   },
                   {

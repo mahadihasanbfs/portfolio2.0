@@ -32,7 +32,7 @@ const BlogCart = ({ bData }) => {
                               <Link to={`/blog/${url}`}
                                     className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-800"
                               >
-                                    Find out more
+                                    Read More
 
                                     <span
                                           aria-hidden="true"

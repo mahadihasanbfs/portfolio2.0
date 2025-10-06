@@ -2,28 +2,28 @@ import React from 'react';
 import { HiOutlineCodeBracket, HiOutlineCurrencyBangladeshi, HiOutlineWrenchScrewdriver, HiPhone } from 'react-icons/hi2';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import tailwind from '../../../Assctes/icon/tailwind.png'
-import bootstrap from '../../../Assctes/icon/bootstrap.png'
-import metarial from '../../../Assctes/icon/material UI.png'
-import typescript from '../../../Assctes/icon/typeScript.png'
-import react from '../../../Assctes/icon/react.png'
+import tailwind from '../../../Assctes/icon/Tailwind.png'
+import bootstrap from '../../../Assctes/icon/Bootstrap.png'
+import metarial from '../../../Assctes/icon/Material UI.png'
+import typescript from '../../../Assctes/icon/TypeScript.png'
+import react from '../../../Assctes/icon/React.png'
 import redux from '../../../Assctes/icon/redux.png'
-import js from '../../../Assctes/icon/javaScript.png'
+import js from '../../../Assctes/icon/JavaScript.png'
 import nextJs from '../../../Assctes/icon/nextjs-boilerplate-logo.png';
-import ashtro from '../../../Assctes/icon/astro.png';
-import nest from '../../../Assctes/icon/nest.js.png';
-import vue from '../../../Assctes/icon/vue.js.png';
-import angular from '../../../Assctes/icon/angular.png';
+import ashtro from '../../../Assctes/icon/Astro.png';
+import nest from '../../../Assctes/icon/Nest.js.png';
+import vue from '../../../Assctes/icon/Vue.js.png';
+import angular from '../../../Assctes/icon/Angular.png';
 
 //backend
-import nodejs from '../../../Assctes/icon/node.js.png'
+import nodejs from '../../../Assctes/icon/Node.js.png'
 import python from '../../../Assctes/icon/python.png'
 import php from '../../../Assctes/icon/php.png'
 import go from '../../../Assctes/icon/go.png'
-import express from '../../../Assctes/icon/express.png'
+import express from '../../../Assctes/icon/Express.png'
 import dj from '../../../Assctes/icon/dj.png'
-import Laravel from '../../../Assctes/icon/laravel.png'
-import Fastify from '../../../Assctes/icon/fastify.png'
+import Laravel from '../../../Assctes/icon/Laravel.png'
+import Fastify from '../../../Assctes/icon/Fastify.png'
 
 
 //database
@@ -31,37 +31,38 @@ import mongo from '../../../Assctes/icon/mongodb.png'
 import mysql from '../../../Assctes/icon/mySQL.png'
 import postgres from '../../../Assctes/icon/postgress.png'
 import firebase from '../../../Assctes/icon/firebase.png'
-import Microsoft from '../../../Assctes/icon/microsoft SQL.png';
-import Redis from '../../../Assctes/icon/redis.png';
+import Microsoft from '../../../Assctes/icon/Microsoft SQL.png';
+import Redis from '../../../Assctes/icon/Redis.png';
 
 //tools
 import git from '../../../Assctes/icon/git.png';
 import figma from '../../../Assctes/icon/figma.png'
 import azure from '../../../Assctes/icon/azure.png'
 import aws from '../../../Assctes/icon/aws.png'
-import Jest from '../../../Assctes/icon/jest.png'
-import Docker from '../../../Assctes/icon/docker.png'
-import SonarQube from '../../../Assctes/icon/sonarQube.png'
+import jest from '../../../Assctes/icon/Jest.png'
+import Docker from '../../../Assctes/icon/Docker.png'
+import SonarQube from '../../../Assctes/icon/SonarQube.png'
 import Postman from '../../../Assctes/icon/postman.png'
 import slack from '../../../Assctes/icon/slack.png'
 import graphql from '../../../Assctes/icon/graphql.png'
 
 //mobile apps
 
-import Swift from '../../../Assctes/icon/swift.png'
-import Flutter from '../../../Assctes/icon/flatter.png'
-import Kotlin from '../../../Assctes/icon/kotlin.png'
-import Ionic from '../../../Assctes/icon/ionic.png'
+import Swift from '../../../Assctes/icon/Swift.png'
+import Flutter from '../../../Assctes/icon/Flatter.png'
+import Kotlin from '../../../Assctes/icon/Kotlin.png'
+import Ionic from '../../../Assctes/icon/Ionic.png'
 
 
 // payment getaway
 
 import ssl from '../../../Assctes/icon/ssl.png'
 import strip from '../../../Assctes/icon/stripe.png'
-import bkash from '../../../Assctes/icon/bkash.png'
+import bkash from '../../../Assctes/icon/Bkash.png'
 import nogod from '../../../Assctes/icon/nogod.png'
-import paypal from '../../../Assctes/icon/paypal.png';
+import paypal from '../../../Assctes/icon/Paypal.png';
 import AmarPay from '../../../Assctes/icon/amarpay.png';
+
 
 
 // import firebase from '../../../Assctes/icon/firebase.png'
@@ -113,10 +114,7 @@ const Technology = () => {
                               id: 8,
                               name: "Astro", img: ashtro
                         },
-                        {
-                              id: 9,
-                              name: "Nest.js", img: nest
-                        },
+
                         {
                               id: 10,
                               name: "Angular", img: angular
@@ -163,6 +161,10 @@ const Technology = () => {
                         {
                               id: 7,
                               name: "Fastify", img: Fastify
+                        },
+                        {
+                              id: 9,
+                              name: "Nest.js", img: nest
                         },
                   ]
             },
@@ -218,7 +220,7 @@ const Technology = () => {
                         },
                         {
                               id: 4,
-                              name: "Jest", img: Jest
+                              name: "Jest", img: jest
                         },
                         {
                               id: 5,
@@ -317,7 +319,7 @@ const Technology = () => {
                                     >
                                           <div className="sp-box border rounded-r-lg rounded-bl-lg border-[#2a4892]  relative p-3">
                                                 <div className="absolute top-[-28px] bg-[#2a4892] sp pl-2 pr-14  py-1 left-[-1px]">
-                                                      <h1 className='md:text-md text-sm'>{tData.title}</h1>
+                                                      <h1 className='md:text-md whitespace-nowrap text-sm'>{tData.title}</h1>
                                                 </div>
                                                 <div className="container mx-auto p-4">
                                                       <figure className="grid mt-4 grid-cols-3 sm:grid-cols-6 gap-4">
@@ -329,7 +331,7 @@ const Technology = () => {
                                                                               src={td.img}
                                                                               alt={td.name}
                                                                         />
-                                                                        <span className="absolute w-full left-1/2 -translate-x-1/2 bottom-[calc(100%+8px)] flex items-center justify-center capitalize px-2 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                                                                        <span className="absolute  left-1/2 -translate-x-1/2 bottom-[calc(100%+2px)] flex items-center justify-center capitalize px-2 py-1 whitespace-nowrap text-xs bg-gray-500 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                                                                               {td.name}
                                                                         </span>
                                                                   </div>

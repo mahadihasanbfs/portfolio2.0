@@ -70,7 +70,7 @@ const AllProject = () => {
                               <div className='w-48'>
                                     <Link
                                           className="group flex items-center justify-center gap-4  border border-indigo-600 bg-indigo-600 px-10 py-3 transition-colors hover:bg-transparent focus:outline-none focus:ring"
-                                          to='/contract'
+                                          to='/contacts'
                                     >
                                           <span
                                                 className="font-medium text-white transition-colors group-hover:text-indigo-600 group-active:text-indigo-500"
@@ -83,8 +83,8 @@ const AllProject = () => {
                               </div>
                         </div>
                         <div className="flex justify-between mt-8 border-b border-[#ffffff2f] pb-3">
-                              <h4 className="font-bold text-lg text-blue-500">All Projects</h4>
-                              <ul className="flex gap-8 items-center px-4">
+                              <h4 className="font-bold whitespace-nowrap text-lg text-blue-500">All Projects</h4>
+                              <ul className="flex whitespace-nowrap gap-8 overflow-x-auto w-40 md:w-full items-center px-4">
                                     <li>
                                           <button onClick={() => setSearchValue("all")} className={`duration-200 capitalize hover:text-blue-500 ${searchValue == 'all' && 'text-blue-500'}`}>All</button>
                                     </li>
@@ -102,7 +102,7 @@ const AllProject = () => {
                         <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-col-1 gap-10 mt-10'>
 
                               {searchResults?.map(data =>
-                                    <Link to={`/project/${data?.url}`}
+                                    <Link key={data._id} to={`/project/${data?.url}`}
                                           className="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
                                           style={{
                                                 backgroundImage:

@@ -10,7 +10,7 @@ const Offer = () => {
                   id: 'latest-product-design',
                   name: "Latest Product Design",
                   pic: dv1,
-                  description: "We craft innovative designs to captivate clients and attract customers."
+                  description: "We create innovative, eye-catching designs that engage clients, build brand trust, and attract more loyal customers to your business."
             },
             {
                   id: 'smart-tech-team',
@@ -41,7 +41,7 @@ const Offer = () => {
                                     <br />From crafting distinctive branding identities to delivering top-notch UI/UX design, our services are tailored to meet your needs at every step of the process.
                               </p>
 
-                              <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-14 mt-16">
+                              <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-16">
                                     {
                                           offerData.map(offerData => <OfferCart key={offerData.id} offerData={offerData} />)
                                     }

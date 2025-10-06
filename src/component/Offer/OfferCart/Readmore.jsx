@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import mahadi from '../../../Assctes/teamMember/mahadi.jpg';
 import hadi from '../../../Assctes/teamMember/mohotasimhadi.jpeg';
-import maruf from '../../../Assctes/teamMember/shishir.jpeg'
+import maruf from '../../../Assctes/teamMember/mahady.png'
 
 const Read_more = () => {
       const location = useLocation();

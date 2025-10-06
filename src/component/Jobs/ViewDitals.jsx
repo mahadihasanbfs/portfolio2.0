@@ -7,6 +7,7 @@ import uploadImage from '../../Hook/ImageUpload';
 import Swal from 'sweetalert2';
 import { country_code } from './country_code';
 import Select from 'react-select';
+import { Badge, Briefcase, Building2, CalendarDays, MapPin, Users } from 'lucide-react';
 
 
 
@@ -158,16 +159,88 @@ const ViewDetails = () => {
                   overflow: 'hidden',
             }),
       };
-      
+
+      const formatDate = (dateString) => {
+            return new Date(dateString).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+            })
+      }
+
+      const getWorkplaceIcon = (workplace) => {
+            switch (workplace?.toLowerCase()) {
+                  case "remote":
+                        return <MapPin className="w-4 h-4" />
+                  case "onsite":
+                        return <Building2 className="w-4 h-4" />
+                  case "hybrid":
+                        return <Briefcase className="w-4 h-4" />
+                  default:
+                        return <MapPin className="w-4 h-4" />
+            }
+      }
+
+
+
 
 
       return (
             <div>
                   <section className="py-12 bg-gray-900 sm:py-16 lg:py-20">
                         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                              <div className="max-w-3xl mx-auto xl:max-w-4xl mt-4">
+                              <div className="max-w-3xl mx-auto xl:max-w-7xl mt-4">
+                                    <div className="bg-gradient-to-r from-gray-900 to-gray-800 text-white rounded-lg">
+                                          <div className=" px-4 py-12 sm:px-6 lg:px-8">
+                                                <div className="space-y-6">
+                                                      <div>
+                                                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">Job Position: {job_data.job_position}</h1>
+                                                            <p className="mt-4 text-lg text-gray-300">
+                                                                  Bright Future Soft is a Bangladesh based software company dedicated to building intelligent and impactful digital solutions. Founded with a vision to empower businesses through technology, we have grown into a team of skilled developers, designers, and thinkers who are passionate about innovation and quality.
 
-                                    <h1 className="text-3xl font-bold text-gray-100 mt-7 sm:text-4xl xl:text-5xl font-pj">
+                                                            </p>
+                                                      </div>
+
+                                                      {/* Job Meta Information */}
+                                                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+                                                            <div className="flex items-center space-x-2 bg-white/10 rounded-lg p-3">
+                                                                  <Briefcase className="w-5 h-5 text-blue-400" />
+                                                                  <div>
+                                                                        <p className="text-sm text-gray-300">Job Type</p>
+                                                                        {/* <Badge>{job_data.job_type}</Badge> */}
+                                                                        <p className="font-semibold">{job_data.job_type}</p>
+                                                                  </div>
+                                                            </div>
+
+                                                            <div className="flex items-center space-x-2 bg-white/10 rounded-lg p-3">
+                                                                  {getWorkplaceIcon(job_data.workplace)}
+                                                                  <div>
+                                                                        <p className="text-sm text-gray-300">Workplace</p>
+                                                                        <p className="font-semibold">{job_data.workplace}</p>
+                                                                  </div>
+                                                            </div>
+
+                                                            <div className="flex items-center space-x-2 bg-white/10 rounded-lg p-3">
+                                                                  <Users className="w-5 h-5 text-green-400" />
+                                                                  <div>
+                                                                        <p className="text-sm text-gray-300">Vacancies</p>
+                                                                        <p className="font-semibold">{job_data.vacancy} positions</p>
+                                                                  </div>
+                                                            </div>
+
+                                                            <div className="flex items-center space-x-2 bg-white/10 rounded-lg p-3">
+                                                                  <CalendarDays className="w-5 h-5 text-red-400" />
+                                                                  <div>
+                                                                        <p className="text-sm text-gray-300">Deadline</p>
+                                                                        <p className="font-semibold text-sm">{formatDate(job_data.dateline)}</p>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    {/* <h1 className="text-3xl font-bold text-gray-100 mt-7 sm:text-4xl xl:text-5xl font-pj">
                                           Job Title:  {job_data?.job_position}
                                     </h1>
                                     <p className=" font-semibold text-gray-100 mt-7 text-xl font-pj">
@@ -196,29 +269,33 @@ const ViewDetails = () => {
                                           </svg>
 
 
-                                    </div>
-                                    <div className="mt-10">
-                                          <div
+                                    </div> */}
+                                    <div className='px-4 sm:px-6 lg:px-8 mt-2'>
+                                          <div className=" ">
+                                                <div
 
-                                                className="text-white prose prose-invert max-w-none"
-                                                dangerouslySetInnerHTML={{
-                                                      __html: job_data?.description,
-                                                }}
-                                          />
+                                                      className="text-white prose prose-invert max-w-none"
+                                                      dangerouslySetInnerHTML={{
+                                                            __html: job_data?.description,
+                                                      }}
+                                                />
+                                          </div>
+                                          {/* <p className="text-xl  font-bold text-white mt-7 sm:text-xl xl:text-xl font-pj">
+                                                Applications Deadline: {new Date(job_data.dateline).toDateString()}
+                                          </p> */}
+                                          <div class="sm:col-span-2 mt-4">
+                                                <button
+                                                      disabled={new Date(job_data.dateline) < new Date()}
+                                                      onClick={() => setApply(true)}
+                                                      type="button"
+                                                      class="inline-flex disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center w-full px-6 py-4 text-sm font-bold text-black transition-all duration-200 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100 hover:bg-gray-300"
+                                                >
+                                                      {new Date(job_data.dateline) > new Date() ? "APPLY FOR THIS POSITION" : "Deadline Passed"}
+                                                </button>
+                                          </div>
                                     </div>
-                                    <p className="text-xl font-bold text-white mt-7 sm:text-xl xl:text-xl font-pj">
-                                          Applications Deadline: {new Date(job_data.dateline).toDateString()}
-                                    </p>
 
-                                    <div class="sm:col-span-2 mt-4">
-                                          <button
-                                                onClick={() => setApply(true)}
-                                                type="button"
-                                                class="inline-flex items-center justify-center w-full px-6 py-4 text-sm font-bold text-black transition-all duration-200 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100 hover:bg-gray-300"
-                                          >
-                                                APPLY FOR THIS POSITION
-                                          </button>
-                                    </div>
+
                                     {apply && <section class="py-20">
                                           <div className={apply ? "flex" : "hidden"}>
                                                 <div className={`fixed  z-50 top-0 left-0 flex h-full min-h-screen w-full items-center justify-center bg-black bg-opacity-90 px-4 py-5  ${apply ? "block" : "hidden"
@@ -256,7 +333,7 @@ const ViewDetails = () => {
                                                                                                             value={selectedCode}
                                                                                                             onChange={handleCountryChange}
                                                                                                             styles={customSelectStyles}
-                                                                                                            className="flex-shrink-0"
+                                                                                                            className="flex-shrink-0 "
                                                                                                             isSearchable={true} // Disable search functionality
                                                                                                       />
                                                                                                       <input
@@ -268,6 +345,29 @@ const ViewDetails = () => {
                                                                                                       />
                                                                                                 </div>
                                                                                           </div>
+                                                                                          {/* <div className="w-full max-w-md">
+                                                                                                <label className="block text-sm font-semibold text-gray-800 mb-1">
+                                                                                                      Phone Number
+                                                                                                </label>
+                                                                                                <div className="flex items-center mt-2 bg-white border border-gray-300 rounded-md shadow-sm focus-within:ring-2 focus-within:ring-blue-500">
+                                                                                                      <div className="w-24">
+                                                                                                            <Select
+                                                                                                                  options={country_code}
+                                                                                                                  value={selectedCode}
+                                                                                                                  onChange={handleCountryChange}
+                                                                                                                  styles={customSelectStyles}
+                                                                                                                  className="rounded-l-md"
+                                                                                                                  isSearchable={true}
+                                                                                                            />
+                                                                                                      </div>
+                                                                                                      <input
+                                                                                                            type="text"
+                                                                                                            name="phone_number"
+                                                                                                            className="flex-1 px-4 py-2 rounded-r-md text-gray-900 placeholder-gray-400 focus:outline-none"
+                                                                                                            placeholder="Enter phone number"
+                                                                                                      />
+                                                                                                </div>
+                                                                                          </div> */}
                                                                                           <div class="sm:col-span-2">
                                                                                                 <label for=""> Email address </label>
                                                                                                 <div class="block mt-2 w-full p-0.5  text-sm font-normal text-gray-900 placeholder-gray-500 bg-white border  rounded-md caret-gray-900 focus:ring-gray-900 border-gray-500 ">
@@ -311,7 +411,7 @@ const ViewDetails = () => {
                                                                                                                                                 </svg>}
                                                                                                                                     </>}
                                                                                                                         </div>
-                                                                                                                        <Link to={resume} target="_blank" class="ml-3 text-base font-normal text-gray-900">{name ? name : 'Upload Your Resume '} </Link>
+                                                                                                                        <Link to={resume} target="_blank" class="ml-3 text-base font-normal text-gray-900">{name ? name : 'Upload Your Resume (Max 1 MB) '} </Link>
                                                                                                                   </div>
 
                                                                                                                   <div className="mt-4 sm:mt-0">
@@ -359,10 +459,10 @@ const ViewDetails = () => {
                                     </section>}
 
                               </div>
-                        </div >
-                  </section >
+                        </div>
+                  </section>
 
-            </div >
+            </div>
       );
 };
 

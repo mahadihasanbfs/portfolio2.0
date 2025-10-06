@@ -5,29 +5,29 @@ import { route } from './Routers/Route/Route';
 import { useEffect, useState } from 'react';
 import whatsapp from './Assctes/whatsapp-svgrepo-com.svg'
 
-
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
-  const [sppin, setSppin] = useState(false);
+      const [sppin, setSppin] = useState(false);
 
 
-  useEffect(() => {
-    setSppin(true);
-    setTimeout(() => {
-      setSppin(false);
-    }, 2000);
-  }, []);
+      useEffect(() => {
+            setSppin(true);
+            setTimeout(() => {
+                  setSppin(false);
+            }, 2000);
+      }, []);
 
-  return (
-    <div>
+      return (
+            <div>
 
-     
+                  <Analytics />
 
-      <RouterProvider router={route}></RouterProvider>
+                  <RouterProvider router={route}></RouterProvider>
 
-    </div>
+            </div>
 
-  );
+      );
 }
 
 export default App;

@@ -1,15 +1,40 @@
 import React from 'react';
+import Swal from 'sweetalert2';
+import { base_url } from '../../../layout/Title';
 
 const News_Letter = () => {
       const subscribe_news_letter = (event) => {
-            event.preventDefault(); // Prevent form submission
-            const email = event.target.email.value; // Access the email input value
-            console.log(email);
+            event.preventDefault();
+            const email = event.target.email.value;
+            fetch(`${base_url}/subscriber/add-subscriber`, {
+                  method: 'POST',
+                  headers: {
+                        'content-type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                        email,
+                        status: 'pending',
+                        time_stamp: new Date().toISOString(),
+                  }),
+            })
+                  .then((res) => res.json())
+                  .then((data) => {
+                        if (data) {
+                              Swal.fire({
+                                    title: '',
+                                    text: 'You have successfully subscribed to our newsletter',
+                                    icon: 'success',
+                              });
+                        }
+                        console.log(data);
+                        event.target.reset();
+                  })
+
       };
 
       return (
             <div>
-                  <section className="py-12 bg-[#02091B] sm:py-16 lg:py-20 xl:py-24">
+                  <section className="py-12  sm:py-16 lg:py-20 xl:py-24">
                         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                               <div className="max-w-2xl mx-auto text-center">
                                     <p className="text-base font-semibold text-blue-500">Subscribe for free</p>

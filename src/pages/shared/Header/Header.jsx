@@ -26,9 +26,9 @@ const Header = () => {
 
 
       return (
-            <nav className="fixed w-full z-50 top-0 left-0 right-0">
-                  <div className="py-2  mx-auto glass md:py-4 md:px-[4%] w-full px-[4%]">
-                        <div className="relative px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 flex items-center justify-between">
+            <nav className="fixed  z-50 -top-0.5 left-0 right-0">
+                  <div className="py-2  mx-auto glass md:py-4 md:px-[4%] w-full px-[2%]">
+                        <div className="relative px-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 flex items-center justify-between">
                               <Link to="/"><img loading="eager" src={logo} alt="" className='w-[135px]' /></Link>
                               <ul className=" items-center hidden space-x-8 lg:flex ">
                                     <li className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400 relative">
@@ -96,7 +96,7 @@ const Header = () => {
 
                                     {!user && <li>
                                           <a
-                                                className="inline-flex items-center justify-center group relative  overflow-hidden border border-[#418CD2] px-8 py-2 focus:outline-none focus:ring"
+                                                className="inline-flex cursor-pointer items-center justify-center group relative  overflow-hidden border border-[#418CD2] px-8 py-2 focus:outline-none focus:ring"
 
                                                 onClick={() => setSchedule(true)}
                                           >
@@ -105,7 +105,7 @@ const Header = () => {
                                                 ></span>
 
                                                 <span
-                                                      className="relative text-sm font-medium text-white transition-colors group-hover:text-white"
+                                                      className="relative text-sm font-medium  text-white transition-colors group-hover:text-white"
                                                 >
                                                       Appointment
                                                 </span>
@@ -113,13 +113,13 @@ const Header = () => {
                                     </li>}
 
                                     {
-                                          user && <li className="">
+                                          user && <li className="flex items-center gap-3">
                                                 <div className="dropdown dropdown-end cursor-pointer">
                                                       <label tabIndex={0} >
                                                             <div className="relative cursor-pointer">
                                                                   <img
                                                                         className="object-cover w-10 h-10 rounded-full"
-                                                                        src={user.image}
+                                                                        src={user?.image}
                                                                         alt=""
                                                                   />
                                                                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 absolute right-1 ring-1 ring-white bottom-0" />
@@ -152,204 +152,6 @@ const Header = () => {
                                                                               <span className="text-sm font-medium"> Dashboard </span>
                                                                         </Link>
                                                                   </li>
-                                                                  {/* <li>
-                        <Link
-
-                          to={'employee_issue'}
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium"> Issue Submit </span>
-                        </Link>
-                      </li>
-                      {user?.designation !== 'Chief Executive Officer' && <li>
-                        <a
-                          href=""
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium"> Notice </span>
-                        </a>
-                      </li>}
-                      {user?.designation === 'Chief Executive Officer' && <li>
-                        <a
-                          href=""
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium">Upload Notice </span>
-                        </a>
-                      </li>}
-                      {user?.designation === 'Chief Executive Officer' || user?.designation === 'Manager' && <li>
-                        <Link to={'job_post'}
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium">Upload Job Post </span>
-                        </Link>
-                      </li>}
-                      {user?.designation !== 'Chief Executive Officer' && <li>
-                        <a
-                          href=""
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium"> Your Task </span>
-                        </a>
-                      </li>}
-                      <li>
-                        <a
-                          href=""
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium"> Account </span>
-                        </a>
-                      </li>
-                      {user?.designation === 'Chief Executive Officer' && <li>
-                        <a
-                          href=""
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium"> Task Submission </span>
-                        </a>
-                      </li>}
-                      {user?.designation === 'Chief Executive Officer' && <li>
-                        <Link
-                          to={"/job_post"}
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium"> Job Post </span>
-                        </Link>
-                      </li>}
-                      {user?.designation === 'Chief Executive Officer' && <li>
-                        <Link
-                          to={"/meeting_management"}
-                          className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 opacity-75"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                            />
-                          </svg>
-                          <span className="text-sm font-medium"> Meeting  </span>
-                        </Link>
-                      </li>} */}
                                                                   <li>
                                                                         <button
                                                                               onClick={logOut}
@@ -366,7 +168,7 @@ const Header = () => {
                                           </li>
                                     }
                               </ul>
-                              <div className="lg:hidden md:flex items-center gap-3">
+                              <div className="lg:hidden flex items-center gap-3">
                                     {
                                           user && <div className="cursor-pointer">
                                                 <div className="dropdown dropdown-end cursor-pointer">
@@ -374,7 +176,7 @@ const Header = () => {
                                                             <div className="relative">
                                                                   <img
                                                                         className="object-cover w-10 h-10 rounded-full"
-                                                                        src={user.image}
+                                                                        src={user?.image}
                                                                         alt=""
                                                                   />
                                                                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 absolute right-1 ring-1 ring-white bottom-0" />
@@ -383,163 +185,37 @@ const Header = () => {
                                                       </label>
 
                                                       <ul tabIndex={0} className="menu dropdown-content px-2 py-3 shadow rounded-box w-52 mt-4 bg-[#23263d] border border-[#115fd4]">
-                                                            <ul>
-
-                                                                  <li>
-                                                                        <Link
-                                                                              to={'/admin-blog-from'}
-                                                                              className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
+                                                            <li>
+                                                                  <Link
+                                                                        to={'/dashboard/home'}
+                                                                        className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
+                                                                  >
+                                                                        <svg
+                                                                              xmlns="http://www.w3.org/2000/svg"
+                                                                              className="h-5 w-5 opacity-75"
+                                                                              fill="none"
+                                                                              viewBox="0 0 24 24"
+                                                                              stroke="currentColor"
+                                                                              strokeWidth={2}
                                                                         >
-                                                                              <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    className="h-5 w-5 opacity-75"
-                                                                                    fill="none"
-                                                                                    viewBox="0 0 24 24"
-                                                                                    stroke="currentColor"
-                                                                                    strokeWidth={2}
-                                                                              >
-                                                                                    <path
-                                                                                          strokeLinecap="round"
-                                                                                          strokeLinejoin="round"
-                                                                                          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                                                                                    />
-                                                                              </svg>
-                                                                              <span className="text-sm font-medium"> Blog Publish </span>
-                                                                        </Link>
-                                                                  </li>
-                                                                  <li>
-                                                                        <a
-                                                                              href=""
-                                                                              className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                                                                        >
-                                                                              <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    className="h-5 w-5 opacity-75"
-                                                                                    fill="none"
-                                                                                    viewBox="0 0 24 24"
-                                                                                    stroke="currentColor"
-                                                                                    strokeWidth={2}
-                                                                              >
-                                                                                    <path
-                                                                                          strokeLinecap="round"
-                                                                                          strokeLinejoin="round"
-                                                                                          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                                                                                    />
-                                                                              </svg>
-                                                                              <span className="text-sm font-medium"> Issue Submit </span>
-                                                                        </a>
-                                                                  </li>
-                                                                  {user?.designation !== 'Chief Executive Officer' && <li>
-                                                                        <a
-                                                                              href=""
-                                                                              className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                                                                        >
-                                                                              <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    className="h-5 w-5 opacity-75"
-                                                                                    fill="none"
-                                                                                    viewBox="0 0 24 24"
-                                                                                    stroke="currentColor"
-                                                                                    strokeWidth={2}
-                                                                              >
-                                                                                    <path
-                                                                                          strokeLinecap="round"
-                                                                                          strokeLinejoin="round"
-                                                                                          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                                                                                    />
-                                                                              </svg>
-                                                                              <span className="text-sm font-medium"> Notice </span>
-                                                                        </a>
-                                                                  </li>}
-                                                                  {user?.designation === 'Chief Executive Officer' && <li>
-                                                                        <a
-                                                                              href=""
-                                                                              className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                                                                        >
-                                                                              <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    className="h-5 w-5 opacity-75"
-                                                                                    fill="none"
-                                                                                    viewBox="0 0 24 24"
-                                                                                    stroke="currentColor"
-                                                                                    strokeWidth={2}
-                                                                              >
-                                                                                    <path
-                                                                                          strokeLinecap="round"
-                                                                                          strokeLinejoin="round"
-                                                                                          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                                                                                    />
-                                                                              </svg>
-                                                                              <span className="text-sm font-medium">Upload Notice </span>
-                                                                        </a>
-                                                                  </li>}
-                                                                  {user?.designation !== 'Chief Executive Officer' && <li>
-                                                                        <a
-                                                                              href=""
-                                                                              className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                                                                        >
-                                                                              <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    className="h-5 w-5 opacity-75"
-                                                                                    fill="none"
-                                                                                    viewBox="0 0 24 24"
-                                                                                    stroke="currentColor"
-                                                                                    strokeWidth={2}
-                                                                              >
-                                                                                    <path
-                                                                                          strokeLinecap="round"
-                                                                                          strokeLinejoin="round"
-                                                                                          d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                                                                                    />
-                                                                              </svg>
-                                                                              <span className="text-sm font-medium"> Your Task </span>
-                                                                        </a>
-                                                                  </li>}
-                                                                  <li>
-                                                                        <a
-                                                                              href=""
-                                                                              className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                                                                        >
-                                                                              <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    className="h-5 w-5 opacity-75"
-                                                                                    fill="none"
-                                                                                    viewBox="0 0 24 24"
-                                                                                    stroke="currentColor"
-                                                                                    strokeWidth={2}
-                                                                              >
-                                                                                    <path
-                                                                                          strokeLinecap="round"
-                                                                                          strokeLinejoin="round"
-                                                                                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                                                                    />
-                                                                              </svg>
-                                                                              <span className="text-sm font-medium"> Account </span>
-                                                                        </a>
-                                                                  </li>
-                                                                  {user?.designation === 'Chief Executive Officer' && <li>
-                                                                        <a
-                                                                              href=""
-                                                                              className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
-                                                                        >
-                                                                              <svg
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    className="h-5 w-5 opacity-75"
-                                                                                    fill="none"
-                                                                                    viewBox="0 0 24 24"
-                                                                                    stroke="currentColor"
-                                                                                    strokeWidth={2}
-                                                                              >
-                                                                                    <path
-                                                                                          strokeLinecap="round"
-                                                                                          strokeLinejoin="round"
-                                                                                          d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                                                                                    />
-                                                                              </svg>
-                                                                              <span className="text-sm font-medium"> Task Submission </span>
-                                                                        </a>
-                                                                  </li>}
-                                                            </ul>
+                                                                              <path
+                                                                                    strokeLinecap="round"
+                                                                                    strokeLinejoin="round"
+                                                                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                                                              />
+                                                                        </svg>
+                                                                        <span className="text-sm font-medium"> Dashboard </span>
+                                                                  </Link>
+                                                            </li>
+                                                            <li>
+                                                                  <button
+                                                                        onClick={logOut}
+                                                                        className="flex items-center gap-2 border-s-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
+                                                                  >
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="h-5 w-5 opacity-75"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></svg>
+                                                                        <span className="text-sm font-medium"> Log out </span>
+                                                                  </button>
+                                                            </li>
 
                                                       </ul>
                                                 </div>
@@ -550,6 +226,8 @@ const Header = () => {
                                           {!isMenuOpen ? <RiMenu3Fill className='text-4xl border-[red]' />
                                                 : <GiCancel className='text-4xl border-[red]' />}
                                     </button>
+
+
                               </div>
                         </div>
                   </div>
@@ -630,6 +308,7 @@ const Header = () => {
                                     </NavLink>
                               </li>
 
+
                               {
                                     user ? <li onClick={() => setOptOpen(!optOpen)} className={` mt-3 ${optOpen ? 'h-[auto]' : 'h-[42px]'} hidden overflow-hidden`}>
                                           <div className="flex items-center justify-between gap-2">
@@ -654,7 +333,7 @@ const Header = () => {
 
                               {!user && <li className='mt-4'>
                                     <button
-                                          className="inline-flex items-center justify-center group relative  overflow-hidden border border-[#418CD2] px-8 py-2 focus:outline-none focus:ring"
+                                          className="inline-flex items-center cursor-pointer justify-center group relative  overflow-hidden border border-[#418CD2] px-8 py-2 focus:outline-none focus:ring"
                                           onClick={() => setSchedule(true)}
 
                                     >
@@ -670,18 +349,22 @@ const Header = () => {
                                     </button>
                               </li>
                               }
+
                         </ul>
                   </div>
                   {schedule && <CallSchedule setModalOpen={setSchedule} isModalOpen={schedule} />}
             </nav>
       );
+
+
+
 };
 
 export default Header;
 
 
 
-const CallSchedule = ({ isModalOpen, setModalOpen }) => {
+export const CallSchedule = ({ isModalOpen, setModalOpen }) => {
       if (!isModalOpen) return null; // Modal won't render if it's closed
 
       return (

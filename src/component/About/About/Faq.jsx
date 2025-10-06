@@ -1,7 +1,7 @@
 import { useState } from "react";
 import mahadi from '../../../Assctes/teamMember/mahadi.jpg';
 import hadi from '../../../Assctes/teamMember/mohotasimhadi.jpeg';
-import maruf from '../../../Assctes/teamMember/shishir.jpeg'
+import maruf from '../../../Assctes/teamMember/mahady.png'
 
 const Item = ({ title, children }) => {
       const [isOpen, setIsOpen] = useState(false);
@@ -175,7 +175,7 @@ const CallSchedule = ({ isModalOpen, setModalOpen }) => {
 
       return (
             <div className="fixed inset-0 z-50 flex items-center h-screen pt-20 justify-center bg-black bg-opacity-70">
-                  <div className="relative mx-6 w-full max-w-4xl  p-4 bg-white rounded-lg shadow-lg">
+                  <div className="relative mx-6 w-full max-w-4xl  p-4 glass rounded-lg shadow-lg">
 
                         {/* Calendly iframe with modifications */}
                         <iframe

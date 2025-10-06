@@ -4,7 +4,7 @@ import { base_url } from '../../../layout/Title';
 import { Helmet } from 'react-helmet';
 import mahadi from '../../../Assctes/teamMember/mahadi.jpg';
 import hadi from '../../../Assctes/teamMember/mohotasimhadi.jpeg';
-import maruf from '../../../Assctes/teamMember/shishir.jpeg'
+import maruf from '../../../Assctes/teamMember/mahady.png'
 
 const BlogDetails = () => {
       const [blogList, setBlogList] = useState([])

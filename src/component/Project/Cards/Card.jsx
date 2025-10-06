@@ -25,7 +25,8 @@ const Card = ({ data, stickyTopSpace }) => {
       return (
 
             <Link to={`/project/${data?.url}`}
-                  className="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
+
+                  className="overflow-hidden bg-cover rounded-lg cursor-pointer h-96  group"
                   style={{
                         backgroundImage:
                               `url(${data?.image_url})`
@@ -40,6 +41,8 @@ const Card = ({ data, stickyTopSpace }) => {
                         </div>
                   </div>
             </Link>
+
+
       );
 };
 

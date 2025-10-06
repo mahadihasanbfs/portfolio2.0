@@ -1,33 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Title, { base_url } from '../../../layout/Title';
 import mahadi from '../../../Assctes/teamMember/mahadi.jpg';
 import hadi from '../../../Assctes/teamMember/mohotasimhadi.jpeg';
 import maruf from '../../../Assctes/teamMember/shishir.jpeg'
+import { useQuery } from '@tanstack/react-query';
 
 const ProjectDetails = () => {
-      const [project, setProject] = useState()
+
       const [schedule, setSchedule] = useState(false)
       const { id } = useParams()
-      useEffect(() => {
-            fetch(`${base_url}/project/get-project-by-id?project_id=${id}`)
-                  .then(res => res.json())
-                  .then(data => setProject(data.data))
-      }, []);
+
+
+      const { data: project = {}, refetch, isLoading } = useQuery({
+            queryKey: ["project_data"],
+            queryFn: async () => {
+                  const res = await fetch(
+                        `${base_url}/project/get-project-by-id?project_id=${id}`,
+                        {
+                              headers: {
+                                    'content-type': 'application/json',
+                                    'author': 'bright_future_soft'
+                              },
+                              method: 'GET',
+                        }
+                  );
+                  const data = await res.json();
+                  return data.data;
+            },
+      });
 
       useEffect(() => {
             window.scrollTo(0, 0);
       }, []);
 
-      console.log(project);
-
-
-
-      const isWhite = project?.description.includes('black');
+      useEffect(() => {
+            refetch()
+      }, [id])
 
       return (
             <div className="bg-[#1b2030] text-[#8a8a8a] px-2  py-[100px]">
-                  <section className="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+                  {isLoading && <SkeletonLoader />}
+                  {!isLoading && <section className="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
                         <div className="">
                               <div className="">
                                     <div className="max-w-4xl">
@@ -39,11 +53,18 @@ const ProjectDetails = () => {
 
                                     <div className="mt-8">
                                           <div className="p-2 bg-[#2f4056a1] rounded-xl">
-                                                <img loading="lazy" src={`${project?.image_url} `} alt={`${project?.project_name} -- Project`} className="rounded-xl" />
+
+                                                <img
+                                                      loading="lazy"
+                                                      src={project?.image_url || "/default-image.jpg"}
+                                                      alt={`${project?.project_name} -- Project`}
+                                                      className="rounded-xl"
+                                                      onError={(e) => (e.target.src = "/default-image.jpg")}
+                                                />
                                           </div>
                                     </div>
 
-                                    <div className="mt-12 sm:mt-16 lg:grid lg:grid-cols-12 lg:gap-x-16 xl:gap-x-24">
+                                    <div className="mt-4 sm:mt-16 flex flex-col-reverse gap-4 lg:grid lg:grid-cols-12 lg:gap-x-16 xl:gap-x-24">
                                           <aside className="lg:col-span-4 lg:order-last lg:self-start lg:sticky lg:top-24">
                                                 <div className="overflow-hidden bg-[#ffffff3d] border border-gray-200 border-opacity-30 rounded">
                                                       <div className="px-4 py-5 sm:p-6">
@@ -52,8 +73,8 @@ const ProjectDetails = () => {
                                                             </h4>
 
                                                             <ul className="mt-8 space-y-5">
-                                                                  {project?.technologies.map((technology) => (
-                                                                        <li className="flex items-center space-x-3">
+                                                                  {project?.technologies?.map((technology) => (
+                                                                        <li key={technology?.name} className="flex items-center space-x-3">
                                                                               <div className="inline-flex items-center justify-center flex-shrink-0 w-5  ">
                                                                                     <img src={technology?.imageUrl} alt="" />
                                                                               </div>
@@ -67,7 +88,7 @@ const ProjectDetails = () => {
                                                       </div>
                                                 </div>
                                           </aside>
-                                          <article className="mt-12 prose lg:mt-0  custom-article lg:prose-lg lg:col-span-8 prose-blockquote:lg:text-xl prose-blockquote:lg:leading-9 prose-blockquote:not-italic prose-blockquote:border-none prose-blockquote:text-lg prose-blockquote:leading-8 prose-blockquote:p-0 prose-blockquote:lg:p-0 prose-blockquote:font-medium prose-blockquote:text-gray-900" dangerouslySetInnerHTML={{
+                                          <article className="prose custom-article lg:prose-lg lg:col-span-8 prose-blockquote:lg:text-xl prose-blockquote:lg:leading-9 prose-blockquote:not-italic prose-blockquote:border-none prose-blockquote:text-lg prose-blockquote:leading-8 prose-blockquote:p-0 prose-blockquote:lg:p-0 prose-blockquote:font-medium prose-blockquote:text-gray-900" dangerouslySetInnerHTML={{
                                                 __html: project?.description || '',
                                           }} >
 
@@ -117,7 +138,7 @@ const ProjectDetails = () => {
                         </div>
 
                         {schedule && <CallSchedule setModalOpen={setSchedule} isModalOpen={schedule} />}
-                  </section>
+                  </section>}
             </div>
       );
 };
@@ -132,15 +153,14 @@ const CallSchedule = ({ isModalOpen, setModalOpen }) => {
             <div className="fixed inset-0 z-50 flex items-center h-screen pt-20 justify-center bg-black bg-opacity-70">
                   <div className="relative mx-6 w-full max-w-4xl  p-4 bg-white rounded-lg shadow-lg">
 
-                        {/* Calendly iframe with modifications */}
+
                         <iframe
                               src="https://calendly.com/brightfuturesoft-bd"
                               title="Calendly Schedule"
                               className="w-full h-[80vh]  rounded-lg    "
-                        // allow="camera; microphone"
+
                         />
 
-                        {/* Close button */}
                         <button
                               onClick={() => setModalOpen(false)}
                               className="absolute top-3 bg-[#2463eb] hover:bg-[#315bb6]  size-10 rounded-full right-3 flex justify-center items-center text-gray-100 hover:text-gray-300"
@@ -151,3 +171,19 @@ const CallSchedule = ({ isModalOpen, setModalOpen }) => {
             </div>
       );
 };
+
+
+const SkeletonLoader = () => (
+      <div className="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+            <div className="h-10 bg-gray-600 rounded w-3/4 mb-4"></div>
+            <div className="h-5 bg-gray-700 rounded w-1/2 mb-4"></div>
+            <div className="h-60 bg-gray-700 rounded mb-6"></div>
+            <div className="h-5 bg-gray-600 rounded w-1/3 mb-2"></div>
+            <div className="h-5 bg-gray-600 rounded w-1/4"></div>
+      </div>
+);
+
+
+const ImageSkeleton = () => (
+      <div className="w-full h-[250px] bg-gray-700 animate-pulse rounded-xl"></div>
+);
