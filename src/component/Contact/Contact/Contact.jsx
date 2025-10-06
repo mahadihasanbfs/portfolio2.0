@@ -122,12 +122,17 @@ const Contact = () => {
                                                 <li className='mt-6'>
                                                       <a target='_blank' href="https://bd.linkedin.com/company/thebrightfuture-co" className=" gap-2 duration-200 hover:text-blue-400"><BsLinkedin className=' text-[#00a2ff] bg-white hover:bg-blue-300 p-1 text-4xl rounded-full' /> </a>
                                                 </li>
-                                                <li className='mt-6'>
+                                                <li className='mt-6 w-8'>
+                                                      <Link to="https://x.com/brightfuturebd" className=" gap-2 duration-200 hover:text-blue-400 pt-1">
+                                                            <img className=' rounded-full  ' src="https://images.seeklogo.com/logo-png/49/1/twitter-x-logo-png_seeklogo-492394.png" alt="" />
+
+                                                      </Link>
+                                                </li>
+                                                <li className='mt-6 '>
                                                       <a target='_blank' href="https://www.instagram.com/thebrightfuture_co/" className=" gap-2 duration-200 hover:text-blue-400"><BsInstagram className='text-4xl text-[#00a2ff] bg-white hover:bg-blue-300 p-1 rounded-full' /></a>
                                                 </li>
-                                                <li className='mt-6'>
-                                                      <a target='_blank' href="https://x.com/brightfuturebd" className=" gap-2 duration-200 hover:text-blue-400"><BsTwitter className='text-4xl text-[#00a2ff] bg-white hover:bg-blue-300 p-1 rounded-full' /> </a>
-                                                </li>
+                                                
+
                                           </ul>
                                     </div>
                                     <div className="w-full mt-10">

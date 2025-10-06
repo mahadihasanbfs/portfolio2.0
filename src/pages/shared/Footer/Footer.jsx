@@ -15,8 +15,8 @@ const Footer = () => {
                                           Building the <span className='text-yellow-300'>SOFTWARE</span>.
                                     </p>
                                     <div className='flex md:flex-col md:items-start md:gap-1 items-center gap-2  mt-2  ml-1 text-sm md:text-left text-center text-blue-500'>
-                                          <Link to={"/trams-and-conditions"}>Trams and condition</Link>
-                                          <Link to={"/policy"}>Privacy and policy</Link>
+                                          <Link to={"/terms-and-conditions"}>Terms and conditions</Link>
+                                          <Link to={"/policy"}>Privacy & Policies</Link>
                                     </div>
                                     <div className="goodfirm-widget" data-widget-type="goodfirms-widget-t8" data-widget-pattern="poweredby-star" data-height="60" data-company-id="134938"></div>
                               </div>
@@ -32,12 +32,12 @@ const Footer = () => {
                                                       </li>
                                                       <li className='mt-3'>
                                                             <Link to="https://www.linkedin.com/company/brightfuturesoft/" className="text-blue-500 flex items-center md:justify-start justify-center gap-2">
-                                                                  <BsLinkedin className='text-xl' /> Linked In
+                                                                  <BsLinkedin className='text-xl' /> LinkedIn
                                                             </Link>
                                                       </li>
                                                       <li className='mt-3'>
                                                             <Link to="https://x.com/brightfuturebd" className="text-blue-400 flex items-center md:justify-start justify-center gap-2">
-                                                                  <BsTwitter className='text-xl' /> Twitter
+                                                                  <img className='w-6 rounded-full' src="https://images.seeklogo.com/logo-png/49/1/twitter-x-logo-png_seeklogo-492394.png" alt="" /> X
                                                             </Link>
                                                       </li>
                                                       <li className='mt-3'>

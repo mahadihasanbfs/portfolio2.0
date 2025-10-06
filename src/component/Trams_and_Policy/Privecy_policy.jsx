@@ -29,7 +29,7 @@ const PrivacyISMSPolicy = () => {
                                                             }`}
                                                 >
                                                       {/* <Eye className="inline-block w-5 h-5 mr-2" /> */}
-                                                      Privacy Policy
+                                                      Privacy and Policies
                                                 </button>
                                                 <button
                                                       onClick={() => setActiveTab("isms")}
