@@ -1,14 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import ProjectCart from '../ProjectCart/ProjectCart';
-import Title from '../../../layout/Title';
+import Title, { base_url } from '../../../layout/Title';
 import moduleName from '../../../Assctes/logo.png';
 import MetaTitle from '../../../layout/Title';
+import { useQuery } from '@tanstack/react-query';
 
 const AllProject = () => {
-      const datas = useLoaderData();
-      const project = datas.data
-      console.log(project);
+      // const datas = useLoaderData();
+      // const project = datas.data
+      // console.log(project);
+      const {
+            data: project = [],
+            refetch,
+            isLoading,
+      } = useQuery({
+            queryKey: ["all_users"],
+            queryFn: async () => {
+                  const res = await fetch(`${base_url}/project/get-project`, {
+                        headers: {
+                              "content-type": "application/json",
+                              author: "bright_future_soft",
+                        },
+                        method: "GET",
+                  })
+                  const data = await res.json()
+                  return data.data
+            },
+      })
+
 
       // const stickyTopSpace = 50;
       const [searchValue, setSearchValue] = useState("all");
@@ -101,26 +121,39 @@ const AllProject = () => {
                         </div>
                         <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-col-1 gap-10 mt-10'>
 
-                              {searchResults?.map(data =>
-                                    <Link key={data._id} to={`/project/${data?.url}`}
-                                          className="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
-                                          style={{
-                                                backgroundImage:
-                                                      `url(${data?.image_url})`
-                                          }}
-                                    >
-                                          <div className="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
-                                                <h2 className="mt-20 text-xl font-semibold text-white capitalize">
-                                                      {data?.project_name}
-                                                </h2>
-                                                <div className="mt-2  tracking-wider  ">
-                                                      {stripHtmlTags(data?.description)?.slice(0, 100)}...{' '}<Link className="text-white" to={`/project/${data?.url}`}> More</Link>
+                              {
+                                    isLoading
+                                          ? Array.from({ length: 6 }).map((_, i) => (
+                                                <div
+                                                      key={i}
+                                                      className="overflow-hidden rounded-lg h-96 bg-gray-900 "
+                                                >
+                                                      <div className="flex flex-col justify-center w-full h-full px-8 py-4 backdrop-blur-sm bg-gray-800/20">
+                                                            <div className="mt-20 h-6 w-2/3 bg-gray-400 rounded mb-4"></div>
+                                                            <div className="mt-2 h-4 w-full bg-gray-400 rounded"></div>
+                                                      </div>
                                                 </div>
-                                          </div>
-                                    </Link>
+                                          ))
+                                          : searchResults?.map(data =>
+                                                <Link key={data._id} to={`/project/${data?.url}`}
+                                                      className="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
+                                                      style={{
+                                                            backgroundImage:
+                                                                  `url(${data?.image_url})`
+                                                      }}
+                                                >
+                                                      <div className="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                                                            <h2 className="mt-20 text-xl font-semibold text-white capitalize">
+                                                                  {data?.project_name}
+                                                            </h2>
+                                                            <div className="mt-2  tracking-wider  ">
+                                                                  {stripHtmlTags(data?.description)?.slice(0, 100)}...{' '}<Link className="text-white" to={`/project/${data?.url}`}> More</Link>
+                                                            </div>
+                                                      </div>
+                                                </Link>
 
 
-                              )
+                                          )
                               }
 
                         </div>
