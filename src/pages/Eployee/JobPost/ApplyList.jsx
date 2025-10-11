@@ -286,12 +286,11 @@ const Apply_List = () => {
                         interviewData
                   })
                   try {
-                        await fetch("https://api.brevo.com/v3/smtp/email", {
+                        await fetch(`${base_url}/mail/send-mail/candidate`, {
                               method: "POST",
                               headers: {
-                                    "Content-Type": "application/json",
-                                    Accept: "application/json",
-                                    "api-key": process.env.BREVO_API_KEY
+                                    "content-type": "application/json",
+                                    author: "bright_future_soft"
                               },
                               body: JSON.stringify({
                                     sender: {
