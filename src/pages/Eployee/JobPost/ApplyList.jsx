@@ -29,10 +29,10 @@ const Toast = ({ message, type, onClose }) => {
             >
                   <div
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold ${type === "success"
-                                    ? "bg-success text-success-bg"
-                                    : type === "error"
-                                          ? "bg-danger text-danger-bg"
-                                          : "bg-info text-info-bg"
+                              ? "bg-success text-success-bg"
+                              : type === "error"
+                                    ? "bg-danger text-danger-bg"
+                                    : "bg-info text-info-bg"
                               }`}
                   >
                         {icon}
@@ -286,12 +286,11 @@ const Apply_List = () => {
                         interviewData
                   })
                   try {
-                        await fetch("https://api.brevo.com/v3/smtp/email", {
+                        await fetch(`${base_url}/mail/send-mail/candidate`, {
                               method: "POST",
                               headers: {
-                                    "Content-Type": "application/json",
-                                    Accept: "application/json",
-                                    "api-key":"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"
+                                    "content-type": "application/json",
+                                    author: "bright_future_soft"
                               },
                               body: JSON.stringify({
                                     sender: {
@@ -333,13 +332,11 @@ const Apply_List = () => {
                         interviewData
                   })
                   try {
-                        await fetch("https://api.brevo.com/v3/smtp/email", {
+                        await fetch(`${base_url}/mail/send-mail/candidate`, {
                               method: "POST",
                               headers: {
-                                    "Content-Type": "application/json",
-                                    Accept: "application/json",
-                                    "api-key":
-                                          "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"
+                                    "content-type": "application/json",
+                                    author: "bright_future_soft"
                               },
                               body: JSON.stringify({
                                     sender: {
@@ -353,6 +350,26 @@ const Apply_List = () => {
                                     textContent: `Dear Candidate, You have been invited for an interview. Date: ${interviewData.date}, Time: ${interviewData.time}, Link: ${interviewData.meetLink}`
                               })
                         })
+                        // await fetch("https://api.brevo.com/v3/smtp/email", {
+                        //       method: "POST",
+                        //       headers: {
+                        //             "Content-Type": "application/json",
+                        //             Accept: "application/json",
+                        //             "api-key":
+                        //                   "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"
+                        //       },
+                        //       body: JSON.stringify({
+                        //             sender: {
+                        //                   name: "Bright Future Soft HR",
+                        //                   email: "hr@brightfuturesoft.com"
+                        //             },
+                        //             to: [{ email: job.email_address }],
+                        //             bcc: [{ email: "hr@brightfuturesoft.com" }],
+                        //             subject: "Interview Invitation",
+                        //             htmlContent,
+                        //             textContent: `Dear Candidate, You have been invited for an interview. Date: ${interviewData.date}, Time: ${interviewData.time}, Link: ${interviewData.meetLink}`
+                        //       })
+                        // })
                   } catch (err) { }
             }
             showToast(
@@ -895,8 +912,8 @@ function ActionMenu({ job, shortlist_status, delete_meeting }) {
                         <div className="absolute right-0 bg-gray-900 mt-2 w-48  border border-gray-500  rounded-lg shadow-2xl z-50 overflow-hidden">
                               <button
                                     className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center gap-2 ${job.status === "shortlisted"
-                                                ? "bg-success-bg text-success"
-                                                : "text-foreground hover:bg-surface"
+                                          ? "bg-success-bg text-success"
+                                          : "text-foreground hover:bg-surface"
                                           }`}
                                     onClick={() => {
                                           shortlist_status(
@@ -910,8 +927,8 @@ function ActionMenu({ job, shortlist_status, delete_meeting }) {
                               </button>
                               <button
                                     className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center gap-2 ${job.status === "rejected"
-                                                ? "bg-danger-bg text-danger"
-                                                : "text-foreground hover:bg-surface"
+                                          ? "bg-danger-bg text-danger"
+                                          : "text-foreground hover:bg-surface"
                                           }`}
                                     onClick={() => {
                                           shortlist_status(
@@ -925,8 +942,8 @@ function ActionMenu({ job, shortlist_status, delete_meeting }) {
                               </button>
                               <button
                                     className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center gap-2 ${job.status === "interview"
-                                                ? "bg-info-bg text-info"
-                                                : "text-foreground hover:bg-surface"
+                                          ? "bg-info-bg text-info"
+                                          : "text-foreground hover:bg-surface"
                                           }`}
                                     onClick={() => {
                                           shortlist_status(
@@ -1470,8 +1487,8 @@ function ApplicationDetailsModal({
                                                 )
                                           }
                                           className={`flex-1 px-6 py-2.5 rounded-lg font-medium transition-all ${application.status === "shortlisted"
-                                                      ? "bg-warning hover:bg-warning/90 text-warning-bg"
-                                                      : "bg-success hover:bg-success/90 text-white"
+                                                ? "bg-warning hover:bg-warning/90 text-warning-bg"
+                                                : "bg-success hover:bg-success/90 text-white"
                                                 }`}
                                     >
                                           {application.status === "shortlisted"
@@ -1544,8 +1561,8 @@ function ResumeModal({ resume, onClose, copied, onCopy }) {
                                     <button
                                           onClick={onCopy}
                                           className={`p-2 rounded-lg transition-all ${copied
-                                                      ? "bg-success-bg text-success"
-                                                      : "bg-surface border border-gray-500 text-muted hover:text-foreground"
+                                                ? "bg-success-bg text-success"
+                                                : "bg-surface border border-gray-500 text-muted hover:text-foreground"
                                                 }`}
                                           title={copied ? "Copied!" : "Copy to clipboard"}
                                     >
