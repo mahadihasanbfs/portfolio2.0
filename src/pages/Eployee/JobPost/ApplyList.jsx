@@ -291,8 +291,7 @@ const Apply_List = () => {
                               headers: {
                                     "Content-Type": "application/json",
                                     Accept: "application/json",
-                                    "api-key":
-                                          "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"
+                                    "api-key": process.env.BREVO_API_KEY
                               },
                               body: JSON.stringify({
                                     sender: {
