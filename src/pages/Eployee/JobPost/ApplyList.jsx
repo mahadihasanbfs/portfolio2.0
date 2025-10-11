@@ -286,6 +286,7 @@ const Apply_List = () => {
                         interviewData
                   })
                   try {
+                        console.log("hit");
                         await fetch(`${base_url}/mail/send-mail/candidate`, {
                               method: "POST",
                               headers: {
@@ -303,6 +304,8 @@ const Apply_List = () => {
                                     htmlContent,
                                     textContent: message
                               })
+                        }).then(res => {
+                              console.log(res);
                         })
                   } catch (err) { }
             }
@@ -1123,7 +1126,7 @@ function EmailModal({ emailType, selectedCount, onClose, onSend }) {
                               </button>
                               <button
                                     onClick={() => onSend(subject, message)}
-                                    className={`flex-1 px-6 py-2.5 ${getButtonColor()} text-white rounded-lg font-medium transition-all`}
+                                    className={`flex-1 px-6 py-2.5 ${getButtonColor()} bg-red-500 text-white rounded-lg font-medium transition-all`}
                               >
                                     Send Email
                               </button>
