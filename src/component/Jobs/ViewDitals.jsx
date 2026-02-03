@@ -85,6 +85,13 @@ const ViewDetails = () => {
             const job_post_id = id
             const why = form.why.value
 
+            if (!resume.length) {
+                  Swal.fire('Please upload your resume before applying.', '', 'warning');
+                  setApply(false);
+                  return; // stop function execution
+            }
+
+
 
             const data = {
                   full_name,
@@ -240,36 +247,7 @@ const ViewDetails = () => {
                                           </div>
                                     </div>
 
-                                    {/* <h1 className="text-3xl font-bold text-gray-100 mt-7 sm:text-4xl xl:text-5xl font-pj">
-                                          Job Title:  {job_data?.job_position}
-                                    </h1>
-                                    <p className=" font-semibold text-gray-100 mt-7 text-xl font-pj">
-                                          Bright Future Soft is a startup software company dedicated to transforming the Bangladeshi software industry with innovative solutions. Join us in making a difference and be part of a team that values creativity, excellence, and growth.
-                                    </p>
-                                    <div className="mt-10">
 
-                                          <svg
-                                                className="w-auto h-4 text-gray-300"
-                                                width={300}
-                                                height={16}
-                                                viewBox="0 0 344 16"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                          >
-                                                {Array.from({ length: 999 }, (_, i) => (
-                                                      <line
-                                                            key={i}
-                                                            y1="-0.5"
-                                                            x2="18.0278"
-                                                            y2="-0.5"
-                                                            transform={`matrix(-0.5547 0.83205 0.83205 0.5547 ${i * (3.0278 + 3)} 1)`}
-                                                      />
-                                                ))}
-                                          </svg>
-
-
-                                    </div> */}
                                     <div className='px-4 sm:px-6 lg:px-8 mt-2'>
                                           <div className=" ">
                                                 <div
@@ -320,7 +298,7 @@ const ViewDetails = () => {
                                                                                           <div>
                                                                                                 <label for=""> Full Name </label>
                                                                                                 <div class="block mt-2 w-full p-0.5  text-sm font-normal text-gray-900 placeholder-gray-500 bg-white border  rounded-md caret-gray-900 focus:ring-gray-900  border-gray-500">
-                                                                                                      <input type="text" name="full_name" id="" placeholder="" class="w-full px-4 py-2 border-none" />
+                                                                                                      <input required type="text" name="full_name" id="" placeholder="" class="w-full px-4 py-2 border-none" />
                                                                                                 </div>
                                                                                           </div>
 
@@ -339,7 +317,7 @@ const ViewDetails = () => {
                                                                                                       <input
                                                                                                             type="text"
                                                                                                             name="phone_number"
-
+                                                                                                            required
                                                                                                             className="flex-1 px-4 py-2 border-none rounded-r-md"
                                                                                                             placeholder="Enter phone number"
                                                                                                       />
@@ -371,13 +349,13 @@ const ViewDetails = () => {
                                                                                           <div class="sm:col-span-2">
                                                                                                 <label for=""> Email address </label>
                                                                                                 <div class="block mt-2 w-full p-0.5  text-sm font-normal text-gray-900 placeholder-gray-500 bg-white border  rounded-md caret-gray-900 focus:ring-gray-900 border-gray-500 ">
-                                                                                                      <input type="text" name="email_address" id="" placeholder="" class="w-full px-4 py-2 border-none" />
+                                                                                                      <input required type="text" name="email_address" id="" placeholder="" class="w-full px-4 py-2 border-none" />
                                                                                                 </div>
                                                                                           </div>
                                                                                           <div>
                                                                                                 <label for=""> Salary Expectation </label>
                                                                                                 <div class="block mt-2 w-full p-0.5  text-sm font-normal text-gray-900 placeholder-gray-500 bg-white border  rounded-md caret-gray-900 focus:ring-gray-900 border-gray-500 ">
-                                                                                                      <input type="text" name="salary_expectation" id="" placeholder="" class="w-full px-4 py-2 border-none" />
+                                                                                                      <input required type="text" name="salary_expectation" id="" placeholder="" class="w-full px-4 py-2 border-none" />
                                                                                                 </div>
                                                                                           </div>
 
@@ -385,14 +363,14 @@ const ViewDetails = () => {
                                                                                                 <label for=""> Work Experience in Years
                                                                                                 </label>
                                                                                                 <div class="block mt-2 w-full p-0.5  text-sm font-normal text-gray-900 placeholder-gray-500 bg-white border  rounded-md caret-gray-900 focus:ring-gray-900 border-gray-500 ">
-                                                                                                      <input type="text" name="experience_in_years" id="" placeholder="" class="w-full px-4 py-2 border-none" />
+                                                                                                      <input required type="text" name="experience_in_years" id="" placeholder="" class="w-full px-4 py-2 border-none" />
                                                                                                 </div>
                                                                                           </div>
 
                                                                                           <div class="sm:col-span-2">
                                                                                                 <label for="">Why do you think you are perfect for this position? </label>
                                                                                                 <div class="mt-2 border  border-gray-500 block w-full p-1 text-sm font-normal text-gray-900 placeholder-gray-500 bg-white   rounded-md ">
-                                                                                                      <textarea type="text" name="why" id="" placeholder="" class="w-full px-4 py-3 border-none" />
+                                                                                                      <textarea required type="text" name="why" id="" placeholder="" class="w-full px-4 py-3 border-none" />
                                                                                                 </div>
                                                                                                 <div class="bg-gray-100 max-w-4xl rounded-xl ">
                                                                                                       <div class="p-4 mt-4">
