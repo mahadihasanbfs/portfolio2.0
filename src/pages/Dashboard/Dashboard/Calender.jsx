@@ -36,9 +36,8 @@ const sampleHolidays = [
 
 const employeeBirthdays = [
       { month: 8, day: 20, name: "Mahadi Hasan" },
-      { month: 4, day: 28, name: "Ikram Hussain Siyam" },
       { month: 11, day: 25, name: "Arnob Dey" },
-      { month: 1, day: 13, name: "Ratul Anjum" },
+      { month: 1, day: 13, name: "Munif Shahriar Shovon" },
       { month: 2, day: 2, name: "Omar Faruk" },
 ];
 
@@ -92,7 +91,7 @@ export default function CalendarPage() {
       const isWeekend = (day) => {
             const date = new Date(year, month, day)
             const dayOfWeek = date.getDay()
-            return dayOfWeek === 0 || dayOfWeek === 6
+            return dayOfWeek === 6
       }
 
       const getEvents = (day) => {
